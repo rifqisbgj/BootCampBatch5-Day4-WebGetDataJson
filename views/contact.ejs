@@ -1,0 +1,29 @@
+    <h1>Contact List</h1>
+    <table class="table">
+        <tr>
+            <th>Nama</th>
+            <th>No Telp</th>
+            <th>Email</th>
+        </tr>
+        <!-- Error handling ketika array kosong -->
+        <% if (!contact.length) { %>
+        <tr>
+            <td colspan="3">Data tidak tersedia</td>
+        </tr>
+        <% } %>
+
+        <!-- Menampilkan data array dari server. -->
+        <!-- contact di bawah ini, merupakan variable yang dilempar app.js -->
+        <% contact.forEach(user => { %>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.mobile %></td>
+            <td><% if (!user.email) { %>
+                Email belum diatur
+                <% } %>
+                <%= user.email %>
+            </td>
+        </tr>
+        <% }) %>
+        <!-- end show data contacts -->
+    </table>
